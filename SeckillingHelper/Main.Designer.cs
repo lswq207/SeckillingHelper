@@ -92,7 +92,7 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 91);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 106);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// txtMinute
@@ -135,7 +135,7 @@
 			this.btnStart.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.btnStart.Location = new System.Drawing.Point(23, 63);
 			this.btnStart.Name = "btnStart";
-			this.btnStart.Size = new System.Drawing.Size(129, 25);
+			this.btnStart.Size = new System.Drawing.Size(129, 40);
 			this.btnStart.TabIndex = 3;
 			this.btnStart.Text = "开始运行(&S)";
 			this.btnStart.UseVisualStyleBackColor = true;
@@ -197,7 +197,7 @@
 			this.chkKeepClick.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.chkKeepClick.Location = new System.Drawing.Point(158, 63);
 			this.chkKeepClick.Name = "chkKeepClick";
-			this.chkKeepClick.Size = new System.Drawing.Size(84, 25);
+			this.chkKeepClick.Size = new System.Drawing.Size(84, 40);
 			this.chkKeepClick.TabIndex = 8;
 			this.chkKeepClick.Text = "保持点击";
 			this.chkKeepClick.UseVisualStyleBackColor = true;
@@ -211,17 +211,17 @@
 			this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.label5.Location = new System.Drawing.Point(248, 60);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(84, 31);
+			this.label5.Size = new System.Drawing.Size(84, 46);
 			this.label5.TabIndex = 9;
 			this.label5.Text = "间隔（毫秒）";
 			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// txtClickInterval
 			// 
-			this.txtClickInterval.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtClickInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtClickInterval.Enabled = false;
 			this.txtClickInterval.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtClickInterval.Location = new System.Drawing.Point(338, 63);
+			this.txtClickInterval.Location = new System.Drawing.Point(338, 71);
 			this.txtClickInterval.MaxLength = 3;
 			this.txtClickInterval.Name = "txtClickInterval";
 			this.txtClickInterval.Size = new System.Drawing.Size(39, 23);
@@ -234,7 +234,7 @@
 			this.lblLight.AutoSize = true;
 			this.lblLight.BackColor = System.Drawing.Color.DeepPink;
 			this.lblLight.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblLight.Location = new System.Drawing.Point(3, 67);
+			this.lblLight.Location = new System.Drawing.Point(3, 74);
 			this.lblLight.Name = "lblLight";
 			this.lblLight.Size = new System.Drawing.Size(14, 17);
 			this.lblLight.TabIndex = 11;
@@ -276,7 +276,7 @@
 			this.AcceptButton = this.btnStart;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(402, 91);
+			this.ClientSize = new System.Drawing.Size(402, 106);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
