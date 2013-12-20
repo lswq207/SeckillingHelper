@@ -5,17 +5,17 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SeckillingHelper
 {
 	public partial class Main : Form
 	{
-		private static bool isRunning = false;
-		private static int previouseMouseX = 0;
-		private static int previousMouseY = 0;
-		private const int DEFAULT_TIMER_INTERVAL = 100;
-
+		private bool isRunning = false;
+		private int originalMouseX = 0;
+		private int originalMouseY = 0;
+		private DateTime targetTime;
 
 		//[StructLayout(LayoutKind.Sequential)]
 		//private struct NativeRECT
@@ -78,66 +78,68 @@ namespace SeckillingHelper
 
 		private void btnStart_Click(object sender, EventArgs e)
 		{
-			if (isRunning == false)
+			if (ValidateInput())
 			{
-				StartRun();
+				if (isRunning == false)
+				{
+					StartRun();
+				}
+				else
+				{
+					EndRun();
+				}
 			}
-			else
-			{
-				EndRun();
-			}
-
-
-
-
 		}
 
 		private void StartRun()
 		{
 			btnStart.Text = "停止运行(&P)";
-			tmrClick.Enabled = true;
-			previouseMouseX = MousePosition.X;
-			previousMouseY = MousePosition.Y;
+			tmrRefresh.Enabled = true;
 
-		}
+			if (chkKeepClick.Checked == true)
+			{
+				tmrClick.Interval = Convert.ToInt32(txtClickInterval.Text);
+			}
 
-		private void EndRun()
-		{
-			btnStart.Text = "开始运行(&S)";
-			tmrClick.Enabled = false;
-			tmrClick.Interval = DEFAULT_TIMER_INTERVAL;
-		}
-
-		private void tmrClick_Tick(object sender, EventArgs e)
-		{
 			int hour = Convert.ToInt32(txtHour.Text);
 			int minute = Convert.ToInt32(txtMinute.Text);
 			int second = Convert.ToInt32(txtSecond.Text);
 			int millisecond = Convert.ToInt32(txtMilliSecond.Text);
 
-			DateTime targetTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, second, millisecond);
+			targetTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, second, millisecond);
 
-			if (DateTime.Now >= targetTime)
+			isRunning = true;
+			lblLight.BackColor = Color.LightGreen;
+		}
+
+		private void EndRun()
+		{
+			btnStart.Text = "开始运行(&S)";
+			tmrRefresh.Enabled = false;
+			tmrClick.Enabled = false;
+			isRunning = false;
+
+			lblLight.BackColor = Color.DeepPink;
+		}
+
+		private void tmrClick_Tick(object sender, EventArgs e)
+		{
+			//如果某次将要点击时鼠标位置不再是开始点击时的位置，则停止运行
+			if (MousePosition.X != originalMouseX || MousePosition.Y != originalMouseY)
 			{
-				if (MousePosition.X != previouseMouseX || MousePosition.Y != previousMouseY)
-				{
-					EndRun();
-				}
-
-				mouse_event(MouseEventFlag.LeftDown, 0, 0, 0, UIntPtr.Zero);
-				mouse_event(MouseEventFlag.LeftUp, 0, 0, 0, UIntPtr.Zero);
-
-				tmrClick.Interval = Convert.ToInt32(txtClickInterval.Text);
-
-				if (chkKeepClick.Checked == false)
-				{
-					EndRun();
-				}
-
+				EndRun();
 			}
 
-			previouseMouseX = MousePosition.X;
-			previousMouseY = MousePosition.Y;
+			#region 模拟点击鼠标
+			mouse_event(MouseEventFlag.LeftDown, 0, 0, 0, UIntPtr.Zero);
+			mouse_event(MouseEventFlag.LeftUp, 0, 0, 0, UIntPtr.Zero);
+			#endregion
+
+			//如果没选中（保持点击），则再点击一次后就停止运行
+			if (chkKeepClick.Checked == false)
+			{
+				EndRun();
+			}
 
 
 		}
@@ -145,7 +147,165 @@ namespace SeckillingHelper
 		private void chkKeepClick_CheckedChanged(object sender, EventArgs e)
 		{
 			txtClickInterval.Enabled = chkKeepClick.Checked;
+
+			if (txtClickInterval.Enabled == true)
+			{
+				txtClickInterval.Text = "200";
+			}
+			else
+			{
+				txtClickInterval.Text = string.Empty;
+			}
+
+		}
+
+
+		private void tmrRefresh_Tick(object sender, EventArgs e)
+		{
+			if (DateTime.Now >= targetTime)
+			{
+				tmrClick.Enabled = true;
+
+				#region 保存鼠标开始点击时的位置
+				originalMouseX = MousePosition.X;
+				originalMouseY = MousePosition.Y;
+				#endregion
+			}
+
+
+
+
+		}
+
+		private void tmrClock_Tick(object sender, EventArgs e)
+		{
+			lblClock.Text = DateTime.Now.ToString("H:mm:ss");
+		}
+
+		private void txtHour_Enter(object sender, EventArgs e)
+		{
+			txtHour.Text = string.Empty;
+		}
+
+		private void txtMinute_Enter(object sender, EventArgs e)
+		{
+			txtMinute.Text = string.Empty;
+		}
+
+		private void txtSecond_Enter(object sender, EventArgs e)
+		{
+			txtSecond.Text = string.Empty;
+		}
+
+		private void txtClickInterval_Enter(object sender, EventArgs e)
+		{
 			txtClickInterval.Text = string.Empty;
+		}
+
+		private void txtMilliSecond_Enter(object sender, EventArgs e)
+		{
+			txtMilliSecond.Text = string.Empty;
+		}
+
+		private void Main_Activated(object sender, EventArgs e)
+		{
+			txtHour.Focus();
+		}
+
+		private bool ValidateInput()
+		{
+			string regexNumber = "^[0-9]*$";
+
+			string hourText = txtHour.Text.Trim();
+			string minuteText = txtMinute.Text.Trim();
+			string secondText = txtSecond.Text.Trim();
+			string millisecondText = txtMilliSecond.Text.Trim();
+			string clickIntervalText = txtClickInterval.Text.Trim();
+
+			bool isValid = false;
+
+			if (hourText == string.Empty)
+			{
+				ShowInputErrorMessageBox("请输入“时”");
+			}
+			else if (!Regex.IsMatch(hourText, regexNumber)
+					|| Convert.ToInt32(hourText) < 0
+				|| Convert.ToInt32(hourText) >= 24)
+			{
+				ShowInputErrorMessageBox("“时”应为0~23之间的整数");
+			}
+
+			else if (minuteText == string.Empty)
+			{
+				ShowInputErrorMessageBox("请输入“分”");
+			}
+			else if (!Regex.IsMatch(minuteText, regexNumber)
+					|| Convert.ToInt32(minuteText) < 0
+				|| Convert.ToInt32(minuteText) >= 60)
+			{
+				ShowInputErrorMessageBox("“分”应为0~59之间的整数");
+			}
+
+			else if (secondText == string.Empty)
+			{
+				ShowInputErrorMessageBox("请输入“秒”");
+			}
+			else if (!Regex.IsMatch(secondText, regexNumber)
+					|| Convert.ToInt32(secondText) < 0
+				|| Convert.ToInt32(secondText) >= 60)
+			{
+				ShowInputErrorMessageBox("“秒”应为0~59之间的整数");
+			}
+
+			else if (millisecondText == string.Empty)
+			{
+				ShowInputErrorMessageBox("请输入“毫秒”");
+			}
+			else if (!Regex.IsMatch(millisecondText, regexNumber)
+					|| Convert.ToInt32(millisecondText) < 0
+				|| Convert.ToInt32(millisecondText) >= 1000)
+			{
+				ShowInputErrorMessageBox("“毫秒”应为0~999之间的整数");
+			}
+			else
+			{
+				isValid = true;
+			}
+
+			if (chkKeepClick.Checked == true)
+			{
+				if (clickIntervalText == string.Empty)
+				{
+					ShowInputErrorMessageBox("请输入“间隔”");
+					isValid = false;
+				}
+				else if (!Regex.IsMatch(clickIntervalText, regexNumber)
+					|| Convert.ToInt32(clickIntervalText) < 0
+				|| Convert.ToInt32(clickIntervalText) >= 1000)
+				{
+					ShowInputErrorMessageBox("“间隔”应为0~999之间的整数");
+					isValid = false;
+				}
+
+				else if (millisecondText == string.Empty)
+				{
+					ShowInputErrorMessageBox("请输入“间隔”");
+					isValid = false;
+				}
+				else
+				{
+					isValid = true;
+				}
+			}
+
+			return isValid;
+
+
+		}
+
+		private void ShowInputErrorMessageBox(string text)
+		{
+			MessageBox.Show(text, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
 
