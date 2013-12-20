@@ -222,54 +222,65 @@ namespace SeckillingHelper
 			string millisecondText = txtMilliSecond.Text.Trim();
 			string clickIntervalText = txtClickInterval.Text.Trim();
 
-			bool isValid = false;
-
 			if (hourText == string.Empty)
 			{
 				ShowInputErrorMessageBox("请输入“时”");
+
+				return false;
+
 			}
 			else if (!Regex.IsMatch(hourText, regexNumber)
 					|| Convert.ToInt32(hourText) < 0
 				|| Convert.ToInt32(hourText) >= 24)
 			{
 				ShowInputErrorMessageBox("“时”应为0~23之间的整数");
+
+				return false;
 			}
 
 			else if (minuteText == string.Empty)
 			{
 				ShowInputErrorMessageBox("请输入“分”");
+
+				return false;
 			}
 			else if (!Regex.IsMatch(minuteText, regexNumber)
 					|| Convert.ToInt32(minuteText) < 0
 				|| Convert.ToInt32(minuteText) >= 60)
 			{
 				ShowInputErrorMessageBox("“分”应为0~59之间的整数");
+
+				return false;
 			}
 
 			else if (secondText == string.Empty)
 			{
 				ShowInputErrorMessageBox("请输入“秒”");
+
+				return false;
 			}
 			else if (!Regex.IsMatch(secondText, regexNumber)
 					|| Convert.ToInt32(secondText) < 0
 				|| Convert.ToInt32(secondText) >= 60)
 			{
 				ShowInputErrorMessageBox("“秒”应为0~59之间的整数");
+
+				return false;
 			}
 
 			else if (millisecondText == string.Empty)
 			{
 				ShowInputErrorMessageBox("请输入“毫秒”");
+
+				return false;
 			}
 			else if (!Regex.IsMatch(millisecondText, regexNumber)
 					|| Convert.ToInt32(millisecondText) < 0
 				|| Convert.ToInt32(millisecondText) >= 1000)
 			{
 				ShowInputErrorMessageBox("“毫秒”应为0~999之间的整数");
-			}
-			else
-			{
-				isValid = true;
+
+				return false;
 			}
 
 			if (chkKeepClick.Checked == true)
@@ -277,28 +288,21 @@ namespace SeckillingHelper
 				if (clickIntervalText == string.Empty)
 				{
 					ShowInputErrorMessageBox("请输入“间隔”");
-					isValid = false;
+
+					return false;
 				}
 				else if (!Regex.IsMatch(clickIntervalText, regexNumber)
 					|| Convert.ToInt32(clickIntervalText) < 0
 				|| Convert.ToInt32(clickIntervalText) >= 1000)
 				{
 					ShowInputErrorMessageBox("“间隔”应为0~999之间的整数");
-					isValid = false;
+
+					return false;
 				}
 
-				else if (millisecondText == string.Empty)
-				{
-					ShowInputErrorMessageBox("请输入“间隔”");
-					isValid = false;
-				}
-				else
-				{
-					isValid = true;
-				}
 			}
 
-			return isValid;
+			return true;
 
 
 		}
