@@ -317,6 +317,7 @@
 			this.MaximizeBox = false;
 			this.Name = "Main";
 			this.Activated += new System.EventHandler(this.Main_Activated);
+			this.Shown += new System.EventHandler(this.Main_Shown);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);

@@ -139,7 +139,7 @@ namespace SeckillingHelper
 			targetTime = DateTime.MaxValue;
 
 			//#region 仅供测试模拟手动
-			//string s=""; 
+			//string s = "";
 
 			//foreach (var timeStamp in timeStamps)
 			//{
@@ -164,9 +164,7 @@ namespace SeckillingHelper
 			mouse_event(MouseEventFlag.LeftUp, 0, 0, 0, UIntPtr.Zero);
 			#endregion
 
-			//timeStamps.Add(DateTime.Now.ToString("H:mm:ss+") + " "+  DateTime.Now.Millisecond);
-
-
+			timeStamps.Add(DateTime.Now.ToString("H:mm:ss+") + " " + DateTime.Now.Millisecond);
 
 			//如果没选中（保持点击），则再点击一次后就停止运行
 			if (chkKeepClick.Checked == false)
@@ -216,7 +214,7 @@ namespace SeckillingHelper
 			if (DateTime.Now >= targetTime)
 			{
 				tmrClick.Enabled = true;
-
+				
 				#region 保存鼠标开始点击时的位置
 				originalMouseX = MousePosition.X;
 				originalMouseY = MousePosition.Y;
@@ -260,7 +258,7 @@ namespace SeckillingHelper
 
 		private void Main_Activated(object sender, EventArgs e)
 		{
-			txtHour.Focus();
+			
 		}
 
 		private bool ValidateInput()
@@ -333,6 +331,13 @@ namespace SeckillingHelper
 
 				return false;
 			}
+			else if (Convert.ToInt32(txtHour.Text) <= DateTime.Now.Hour
+			         && Convert.ToInt32(txtMinute.Text) <= DateTime.Now.Minute
+			         && Convert.ToInt32(txtSecond.Text) <= DateTime.Now.Second)
+			{
+				ShowInputErrorMessageBox("只允许输入未来的时间点");
+				return false;
+			}
 
 			if (chkKeepClick.Checked == true)
 			{
@@ -366,6 +371,11 @@ namespace SeckillingHelper
 		private void lblClock_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void Main_Shown(object sender, EventArgs e)
+		{
+			txtHour.Focus();
 		}
 
 
