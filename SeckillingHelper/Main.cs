@@ -16,6 +16,14 @@ namespace SeckillingHelper
 		private int originalMouseX = 0;
 		private int originalMouseY = 0;
 		private DateTime targetTime;
+		private const int DEFAULT_CLICK_INTERVAL = 200;
+		private const double RANDOM_CLICK_INTERVAL_LOWERLIMIT = 0.7;
+		private const double RANDOM_CLICK_INTERVAL_UPPERLIMIT = 1.3;
+
+		//#region 仅供测试模拟手动
+		//private IList<string> timeStamps = new List<string>();
+		//#endregion 
+
 
 		//[StructLayout(LayoutKind.Sequential)]
 		//private struct NativeRECT
@@ -107,9 +115,11 @@ namespace SeckillingHelper
 			int millisecond = Convert.ToInt32(txtMilliSecond.Text);
 
 			targetTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, second, millisecond);
-
+			
 			isRunning = true;
 			lblLight.BackColor = Color.LightGreen;
+
+			//timeStamps.Clear();
 		}
 
 		private void EndRun()
@@ -120,10 +130,29 @@ namespace SeckillingHelper
 			isRunning = false;
 
 			lblLight.BackColor = Color.DeepPink;
+
+			if (chkManual.Checked == true)
+			{
+				tmrClick.Interval = DEFAULT_CLICK_INTERVAL;
+			}
+
+			targetTime = DateTime.MaxValue;
+
+			//#region 仅供测试模拟手动
+			//string s=""; 
+
+			//foreach (var timeStamp in timeStamps)
+			//{
+			//	s += timeStamp + "\n";
+			//}
+
+			//MessageBox.Show(s);
+			//#endregion 仅供测试模拟手动
 		}
 
 		private void tmrClick_Tick(object sender, EventArgs e)
 		{
+			
 			//如果某次将要点击时鼠标位置不再是开始点击时的位置，则停止运行
 			if (MousePosition.X != originalMouseX || MousePosition.Y != originalMouseY)
 			{
@@ -135,11 +164,30 @@ namespace SeckillingHelper
 			mouse_event(MouseEventFlag.LeftUp, 0, 0, 0, UIntPtr.Zero);
 			#endregion
 
+			//timeStamps.Add(DateTime.Now.ToString("H:mm:ss+") + " "+  DateTime.Now.Millisecond);
+
+
+
 			//如果没选中（保持点击），则再点击一次后就停止运行
 			if (chkKeepClick.Checked == false)
 			{
 				EndRun();
 			}
+
+			#region 随机改变点击间隔
+
+			if (chkManual.Checked == true)
+			{
+				Random random = new Random(Guid.NewGuid().GetHashCode());
+
+				int newInterval = random.Next(Convert.ToInt32(tmrClick.Interval * RANDOM_CLICK_INTERVAL_LOWERLIMIT),
+					Convert.ToInt32(tmrClick.Interval * RANDOM_CLICK_INTERVAL_UPPERLIMIT));
+
+				tmrClick.Interval = newInterval;
+			}
+
+
+			#endregion
 
 
 		}
@@ -150,12 +198,15 @@ namespace SeckillingHelper
 
 			if (txtClickInterval.Enabled == true)
 			{
-				txtClickInterval.Text = "200";
+				txtClickInterval.Text = DEFAULT_CLICK_INTERVAL.ToString();
 			}
 			else
 			{
 				txtClickInterval.Text = string.Empty;
+				chkManual.Checked = false;
 			}
+
+			chkManual.Enabled = chkKeepClick.Checked;
 
 		}
 
@@ -301,7 +352,7 @@ namespace SeckillingHelper
 				}
 
 			}
-
+			
 			return true;
 
 
@@ -310,6 +361,11 @@ namespace SeckillingHelper
 		private void ShowInputErrorMessageBox(string text)
 		{
 			MessageBox.Show(text, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
+
+		private void lblClock_Click(object sender, EventArgs e)
+		{
+
 		}
 
 
