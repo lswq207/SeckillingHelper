@@ -164,7 +164,7 @@ namespace SeckillingHelper
 			mouse_event(MouseEventFlag.LeftUp, 0, 0, 0, UIntPtr.Zero);
 			#endregion
 
-			timeStamps.Add(DateTime.Now.ToString("H:mm:ss+") + " " + DateTime.Now.Millisecond);
+			//timeStamps.Add(DateTime.Now.ToString("H:mm:ss+") + " " + DateTime.Now.Millisecond);
 
 			//如果没选中（保持点击），则再点击一次后就停止运行
 			if (chkKeepClick.Checked == false)
