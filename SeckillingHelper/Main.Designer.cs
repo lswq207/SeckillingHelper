@@ -91,18 +91,18 @@
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 3;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 126);
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 143);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// txtMinute
 			// 
 			this.txtMinute.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtMinute.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtMinute.Location = new System.Drawing.Point(113, 33);
+			this.txtMinute.Location = new System.Drawing.Point(113, 37);
 			this.txtMinute.MaxLength = 2;
 			this.txtMinute.Name = "txtMinute";
 			this.txtMinute.Size = new System.Drawing.Size(39, 23);
@@ -113,7 +113,7 @@
 			// 
 			this.txtSecond.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtSecond.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtSecond.Location = new System.Drawing.Point(203, 33);
+			this.txtSecond.Location = new System.Drawing.Point(203, 37);
 			this.txtSecond.MaxLength = 2;
 			this.txtSecond.Name = "txtSecond";
 			this.txtSecond.Size = new System.Drawing.Size(39, 23);
@@ -123,7 +123,7 @@
 			// txtMilliSecond
 			// 
 			this.txtMilliSecond.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtMilliSecond.Location = new System.Drawing.Point(293, 33);
+			this.txtMilliSecond.Location = new System.Drawing.Point(293, 37);
 			this.txtMilliSecond.MaxLength = 3;
 			this.txtMilliSecond.Name = "txtMilliSecond";
 			this.txtMilliSecond.Size = new System.Drawing.Size(39, 23);
@@ -136,9 +136,9 @@
 			this.tableLayoutPanel1.SetColumnSpan(this.btnStart, 3);
 			this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.btnStart.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.btnStart.Location = new System.Drawing.Point(23, 63);
+			this.btnStart.Location = new System.Drawing.Point(23, 71);
 			this.btnStart.Name = "btnStart";
-			this.btnStart.Size = new System.Drawing.Size(129, 60);
+			this.btnStart.Size = new System.Drawing.Size(129, 69);
 			this.btnStart.TabIndex = 3;
 			this.btnStart.Text = "开始运行(&S)";
 			this.btnStart.UseVisualStyleBackColor = true;
@@ -149,9 +149,9 @@
 			this.label1.AutoSize = true;
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label1.Location = new System.Drawing.Point(68, 30);
+			this.label1.Location = new System.Drawing.Point(68, 34);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(39, 30);
+			this.label1.Size = new System.Drawing.Size(39, 34);
 			this.label1.TabIndex = 4;
 			this.label1.Text = "时";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -161,9 +161,9 @@
 			this.label2.AutoSize = true;
 			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label2.Location = new System.Drawing.Point(158, 30);
+			this.label2.Location = new System.Drawing.Point(158, 34);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(39, 30);
+			this.label2.Size = new System.Drawing.Size(39, 34);
 			this.label2.TabIndex = 5;
 			this.label2.Text = "分";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -173,9 +173,9 @@
 			this.label3.AutoSize = true;
 			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label3.Location = new System.Drawing.Point(248, 30);
+			this.label3.Location = new System.Drawing.Point(248, 34);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(39, 30);
+			this.label3.Size = new System.Drawing.Size(39, 34);
 			this.label3.TabIndex = 6;
 			this.label3.Text = "秒";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,9 +185,9 @@
 			this.label4.AutoSize = true;
 			this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label4.Location = new System.Drawing.Point(338, 30);
+			this.label4.Location = new System.Drawing.Point(338, 34);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(39, 30);
+			this.label4.Size = new System.Drawing.Size(39, 34);
 			this.label4.TabIndex = 7;
 			this.label4.Text = "毫秒";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -198,9 +198,9 @@
 			this.tableLayoutPanel1.SetColumnSpan(this.label5, 2);
 			this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label5.Location = new System.Drawing.Point(248, 60);
+			this.label5.Location = new System.Drawing.Point(248, 68);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(84, 66);
+			this.label5.Size = new System.Drawing.Size(84, 75);
 			this.label5.TabIndex = 9;
 			this.label5.Text = "间隔（毫秒）";
 			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -210,7 +210,7 @@
 			this.txtClickInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtClickInterval.Enabled = false;
 			this.txtClickInterval.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtClickInterval.Location = new System.Drawing.Point(338, 81);
+			this.txtClickInterval.Location = new System.Drawing.Point(338, 94);
 			this.txtClickInterval.MaxLength = 3;
 			this.txtClickInterval.Name = "txtClickInterval";
 			this.txtClickInterval.Size = new System.Drawing.Size(39, 23);
@@ -223,7 +223,7 @@
 			this.lblLight.AutoSize = true;
 			this.lblLight.BackColor = System.Drawing.Color.DeepPink;
 			this.lblLight.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.lblLight.Location = new System.Drawing.Point(3, 84);
+			this.lblLight.Location = new System.Drawing.Point(3, 97);
 			this.lblLight.Name = "lblLight";
 			this.lblLight.Size = new System.Drawing.Size(14, 17);
 			this.lblLight.TabIndex = 11;
@@ -235,7 +235,7 @@
 			this.lblClock.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.lblClock.Location = new System.Drawing.Point(23, 0);
 			this.lblClock.Name = "lblClock";
-			this.lblClock.Size = new System.Drawing.Size(354, 30);
+			this.lblClock.Size = new System.Drawing.Size(354, 34);
 			this.lblClock.TabIndex = 12;
 			this.lblClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.lblClock.Click += new System.EventHandler(this.lblClock_Click);
@@ -244,7 +244,7 @@
 			// 
 			this.txtHour.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtHour.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.txtHour.Location = new System.Drawing.Point(23, 33);
+			this.txtHour.Location = new System.Drawing.Point(23, 37);
 			this.txtHour.MaxLength = 2;
 			this.txtHour.Name = "txtHour";
 			this.txtHour.Size = new System.Drawing.Size(39, 23);
@@ -259,12 +259,12 @@
 			this.tableLayoutPanel2.Controls.Add(this.chkKeepClick, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.chkManual, 0, 1);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(158, 63);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(158, 71);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 2;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(84, 60);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(84, 69);
 			this.tableLayoutPanel2.TabIndex = 13;
 			// 
 			// chkKeepClick
@@ -275,7 +275,7 @@
 			this.chkKeepClick.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.chkKeepClick.Location = new System.Drawing.Point(3, 3);
 			this.chkKeepClick.Name = "chkKeepClick";
-			this.chkKeepClick.Size = new System.Drawing.Size(78, 24);
+			this.chkKeepClick.Size = new System.Drawing.Size(78, 28);
 			this.chkKeepClick.TabIndex = 9;
 			this.chkKeepClick.Text = "保持点击";
 			this.chkKeepClick.UseVisualStyleBackColor = true;
@@ -288,9 +288,9 @@
 			this.chkManual.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.chkManual.Enabled = false;
 			this.chkManual.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.chkManual.Location = new System.Drawing.Point(3, 33);
+			this.chkManual.Location = new System.Drawing.Point(3, 37);
 			this.chkManual.Name = "chkManual";
-			this.chkManual.Size = new System.Drawing.Size(78, 24);
+			this.chkManual.Size = new System.Drawing.Size(78, 29);
 			this.chkManual.TabIndex = 11;
 			this.chkManual.Text = "模拟手动";
 			this.chkManual.UseVisualStyleBackColor = true;
@@ -308,14 +308,17 @@
 			// Main
 			// 
 			this.AcceptButton = this.btnStart;
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(402, 126);
+			this.ClientSize = new System.Drawing.Size(402, 143);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "Main";
+			this.Text = "SecKilling Clicker";
+			this.TopMost = true;
 			this.Activated += new System.EventHandler(this.Main_Activated);
 			this.Shown += new System.EventHandler(this.Main_Shown);
 			this.tableLayoutPanel1.ResumeLayout(false);

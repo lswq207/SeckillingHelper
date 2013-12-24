@@ -233,27 +233,27 @@ namespace SeckillingHelper
 
 		private void txtHour_Enter(object sender, EventArgs e)
 		{
-			txtHour.Text = string.Empty;
+			//txtHour.Text = string.Empty;
 		}
 
 		private void txtMinute_Enter(object sender, EventArgs e)
 		{
-			txtMinute.Text = string.Empty;
+			//txtMinute.Text = string.Empty;
 		}
 
 		private void txtSecond_Enter(object sender, EventArgs e)
 		{
-			txtSecond.Text = string.Empty;
+			//txtSecond.Text = string.Empty;
 		}
 
 		private void txtClickInterval_Enter(object sender, EventArgs e)
 		{
-			txtClickInterval.Text = string.Empty;
+			//txtClickInterval.Text = string.Empty;
 		}
 
 		private void txtMilliSecond_Enter(object sender, EventArgs e)
 		{
-			txtMilliSecond.Text = string.Empty;
+			//txtMilliSecond.Text = string.Empty;
 		}
 
 		private void Main_Activated(object sender, EventArgs e)
@@ -375,7 +375,7 @@ namespace SeckillingHelper
 
 		private void Main_Shown(object sender, EventArgs e)
 		{
-			txtHour.Focus();
+			//txtHour.Focus();
 		}
 
 
